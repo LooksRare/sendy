@@ -10,7 +10,7 @@
 # Run:
 # $ docker run --rm -d --env-file sendy.env sendy:latest
 
-FROM php:apache as sendy
+FROM php:7.3.1-apache as sendy
 
 ARG SENDY_VER=6.0.7.1
 ARG ARTIFACT_DIR=6.0.7.1
