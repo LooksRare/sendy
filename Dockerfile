@@ -10,7 +10,7 @@
 # Run:
 # $ docker run --rm -d --env-file sendy.env sendy:latest
 
-FROM php:7.3.1-apache as sendy
+FROM php:8-apache as sendy
 
 ARG SENDY_VER=6.0.7.1
 ARG ARTIFACT_DIR=6.0.7.1
@@ -19,7 +19,7 @@ ENV SENDY_VERSION ${SENDY_VER}
 
 RUN apt -qq update && apt -qq upgrade -y \
   # Install unzip cron
-  && apt -qq install -y unzip cron  \
+  && apt -qq install -y unzip cron \
   # Install php extension gettext
   # Install php extension mysqli
   && docker-php-ext-install calendar gettext mysqli \
@@ -36,6 +36,7 @@ RUN unzip /tmp/sendy-${SENDY_VER}.zip -d /tmp \
   && chmod -R 777 /tmp/sendy/uploads \
   && rm -rf /var/www/html \
   && mv /tmp/sendy /var/www/html \
+  && chown -R www-data:www-data /var/www \
   && mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
   && rm -rf /tmp/* \
   && echo "\nServerName \${SENDY_FQDN}" > /etc/apache2/conf-available/serverName.conf \
