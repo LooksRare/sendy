@@ -23,7 +23,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         with:
-          driver: docker
+          driver: docker-container
           version: latest
           platforms: linux/arm64
 
