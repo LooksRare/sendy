@@ -17,7 +17,7 @@ $dbName = getenv('MYSQL_DATABASE'); //MySQL Database Name
 //                               OPTIONAL SETTINGS
 //----------------------------------------------------------------------------------//
 
-/* 
+/*
     Change the database character set to something that supports the language you'll
     be using. Example, set this to utf16 if you use Chinese or Vietnamese characters
 */
@@ -30,3 +30,4 @@ $dbPort = (!empty(getenv('SENDY_DB_PORT')) ? getenv('SENDY_DB_PORT') : 3306);
 define('COOKIE_DOMAIN', '');
 
 //----------------------------------------------------------------------------------//
+?>
